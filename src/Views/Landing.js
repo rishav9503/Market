@@ -1,12 +1,12 @@
-import { Layout, Text, Card, Icon } from "@ui-kitten/components"
-import { Button, StyleSheet } from 'react-native'
-import { jobs } from "../constants/dummydata";
+import { Layout, Text,  Icon, Button } from "@ui-kitten/components"
+import {  StyleSheet } from 'react-native'
+import { jobs, shadow } from "../constants/dummydata";
 import PillButton from "../Components/Pill";
 import Circular from "../Components/Circular";
 import BaseComponent from "../Components/BaseComponent";
 import { useMemo } from "react";
 
-const Landing = () => {
+const Landing = ({ navigation, ...props}) => {
 
     const renderTitles = () => (
         <>
@@ -16,7 +16,7 @@ const Landing = () => {
     )
     const rederJobCategories = () => useMemo(() => (
         <>
-        <Text style={{marginTop:20, marginBottom:5}}>Search by categories</Text>
+        <Text style={{marginTop:10,fontWeight:'300', fontSize:18, }}>Find your Job</Text>
          <Layout style={styles.jobCategory}>
             
             {jobs.map((item) => <Circular name={item.jobName} />)}
@@ -26,10 +26,33 @@ const Landing = () => {
 
     ), [jobs])
 
-    // const RightIcon = () => (
-       
-    //   );
+  
 
+    const renderJobTypes=()=>{
+        return(
+            <>
+            <Text style={{marginTop:10,fontWeight:'300', fontSize:18, }}>Job types</Text>
+                <Layout style={styles.jobTypeContainer}>
+                    <Layout style={styles.primary}>
+                        <Icon name='home-outline' style={styles.homeIcon} />
+                        <Text>WFH</Text>
+                    </Layout>
+                    <Layout style={styles.secondary}>
+                        <Layout style={styles.top}>
+                            <Icon name='briefcase-outline' style={styles.homeIcon} />
+                            <Text>Full Time</Text>
+                        </Layout>
+                        <Layout style={styles.top}>
+                            <Icon name='heart-outline' style={styles.homeIcon} />
+                            <Text>Part Time</Text>
+                        </Layout>
+                    </Layout>
+                </Layout>
+            </>
+
+
+        )
+    }
     const renderBanner = () => (
         <Layout style={styles.card}  >
             <Layout style={{ justifyContent: 'center', backgroundColor:'#f3fce8' }}>
@@ -45,16 +68,28 @@ const Landing = () => {
         </Layout>
     )
 
+    const renderLoginButtton = () => (
+        <Button size="giant" accessoryRight={
+            () => (
+                <Icon name='chevron-right-outline' style={{ height: 50, width: 50 }} />)} >
+            KNOW ABOUT CRYPTO
+        </Button>
+    )
+      
+    
+
 
     return (
         <BaseComponent>
-            <>
+            <Layout style={{flex:1, justifyContent:'space-between', backgroundColor:'#EAFBD6',}}>
                 {renderTitles()}
                 {renderBanner()}
+                {renderJobTypes()}
                 {rederJobCategories()}
+                {/* {renderLoginButtton()} */}
                
 
-            </>
+            </Layout>
         </BaseComponent>
 
     )
@@ -65,7 +100,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#f3fce8',
         flexDirection:'row',
         justifyContent:'space-between',
-        paddingVertical: 30,
+        paddingVertical: 15,
         paddingHorizontal: 20,
         marginTop: 10,
         borderRadius: 10,
@@ -88,6 +123,7 @@ const styles = StyleSheet.create({
 
         borderRadius: 12,
         padding: 8,
+        marginBottom:5,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -98,10 +134,53 @@ const styles = StyleSheet.create({
         elevation: 4,
     },
     icon:{
-        height:24,
-        width:24,
+        height:64,
+        width:64,
         marginLeft:10
     },
-    title1:{color:'#8F9BB3', fontWeight:'400', marginTop:20},
-    title2:{color:'#111111', fontWeight:'600'}
+    title1: {
+        color: '#8F9BB3',
+        fontWeight: '300',
+        marginTop: 20
+    },
+    title2: {
+        color: '#111111',
+        fontWeight: '500',
+        fontSize:24
+    },
+    homeIcon:{
+        width: 42,
+        height: 42,
+        borderRadius:19,
+        padding:20
+    },
+    jobTypeContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-evenly',
+        backgroundColor: '#EAFBD6'
+    },
+    primary: {
+        height: 180, 
+        borderRadius: 12,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '47%',
+        backgroundColor: '#D1F8AF',
+        ...shadow
+    },
+    secondary: {
+        width: '47%',
+        justifyContent: 'space-between',
+        backgroundColor: '#EAFBD6'
+    },
+    top: {
+        borderRadius: 12,
+        width: '100%',
+        height: 85,
+        backgroundColor: '#D1F8AF',
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...shadow
+    },
+   
 })

@@ -33,6 +33,7 @@ import Splash from './src/Views/Splash';
 import { default as theme } from './custom-theme.json'; // <-- Import app theme
 import Landing from './src/Views/Landing';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
+import Market from './src/Views/Market';
 
 // import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -95,6 +96,7 @@ function App() {
       selectedIndex={new IndexPath(state.index)}
       onSelect={index => navigation.navigate(state.routeNames[index.row])}>
       <DrawerItem title='Home' />
+      <DrawerItem title='Market' />
     </Drawer>
   );
   const DrawerNavigator = () => (
@@ -104,6 +106,8 @@ function App() {
     }} drawerContent={props => <DrawerContent {...props} />}>
 
       <Screen name='Home' component={Landing} />
+      <Screen
+                name="Market" component={Market} />
     </Navigator>
   );
 
@@ -126,6 +130,7 @@ function App() {
               <Stack.Screen name="Auth" component={AuthStack} />
               <Stack.Screen
                 name="Home" component={DrawerNavigator} />
+               
             </Stack.Navigator>
           </NavigationContainer>
 

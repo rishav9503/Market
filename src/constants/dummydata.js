@@ -11,29 +11,17 @@ export const jobs =[
         jobName:'Government',
         jobIcon:'briefcase-outline '
     },
-    {
-        jobName:'BPO',
-        jobIcon:'code-outline'
-    },
-    {
-        jobName:'Content',
-        jobIcon:'code-outline'
-    },
-    {
-        jobName:'UI/UX',
-        jobIcon:'code-outline'
-    },
-    {
-        jobName:'Home Service',
-        jobIcon:'code-outline'
-    },
-    {
-        jobName:'Fashion',
-        jobIcon:'code-outline'
-    },
-    {
-        jobName:'Travel',
-        jobIcon:'code-outlines',
-    },
 
-]
+] 
+export const  shadow={
+      shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.23,
+        shadowRadius: 2.62,
+        elevation: 8,
+}
+
+

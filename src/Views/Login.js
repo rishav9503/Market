@@ -50,7 +50,7 @@ const Login=({navigation}) =>{
     const renderLoginButtton=()=> {
         return (
             <Button onPress={()=>handleLogin()} disabled={disabled} style={styles.loginBtn} status='primary' variants='gaint'>
-                LOGIN
+              {'LOGIN'}
             </Button>
         )
     }
