@@ -15,7 +15,7 @@ import { shadow } from "../constants/dummydata";
 import CoinItem from "../Components/CoinItems";
 import BaseComponent from "../Components/BaseComponent";
 
-const Market = () => {
+const Market = ({navigation}) => {
 	const [coins, setCoins] = useState([]);
 	const [refreshing, setRefreshing] = useState(false);
 	const [search, setSearch] = useState("");
@@ -31,7 +31,7 @@ const Market = () => {
     const getWatchListData = async (updatedCoinId) => {
         try {
           const response = await axios.get(
-            `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${updatedCoinId}&order=market_cap_desc&per_page=1&page=1&sparkline=false`
+            `https://api.cryptowat.ch/markets/:exchange/:pair/ohlc`
           );
           console.log(response.data)
             //  return response.data;
@@ -57,7 +57,7 @@ const Market = () => {
 						coin.symbol.toLocaleLowerCase().includes(search.toLocaleLowerCase())
 				)}
 				showsVerticalScrollIndicator={false}
-				renderItem={({ item }) => <CoinItem coin={item} />}
+				renderItem={({ item }) => <CoinItem onTap={()=>navigation.navigate('Chart')} coin={item} />}
 				refreshing={refreshing}
 				onRefresh={async () => {
 					setRefreshing(true);

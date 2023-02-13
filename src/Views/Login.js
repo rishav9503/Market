@@ -10,13 +10,20 @@ const Login=({navigation}) =>{
 
 
     const handleLogin = async () => {
-        // const token =
-        //   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
-        // await Keychain.setGenericPassword(userName, token);
-        // setUserDetails({password, userName });
+        // login api call here
+       try{ 
+        const token =
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c";
+        const username = "Akshay";
+        await Keychain.setGenericPassword(username, token);
+        setIsLoggedIn(true);
+        setUserDetails({token, username});
         navigation.navigate('Home')
+        }
+        catch(e){
+            navigation.navigate('Home')
+        }
       };
-    
 
     const handleOnNuserNameChane=(text) =>{
        setUserName(text)

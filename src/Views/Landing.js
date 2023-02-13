@@ -8,12 +8,8 @@ import { useMemo } from "react";
 
 const Landing = ({ navigation, ...props}) => {
 
-    const renderTitles = () => (
-        <>
-            <Text category="s1" status="basic" style={styles.title1}>Hello,</Text>
-            <Text category="h6" status="basic" style={styles.title2}>Rishav</Text>
-        </>
-    )
+   
+    
     const rederJobCategories = () => useMemo(() => (
         <>
         <Text style={{marginTop:10,fontWeight:'300', fontSize:18, }}>Find your Job</Text>
@@ -22,8 +18,6 @@ const Landing = ({ navigation, ...props}) => {
             {jobs.map((item) => <Circular name={item.jobName} />)}
         </Layout>
         </>
-       
-
     ), [jobs])
 
   
@@ -64,7 +58,7 @@ const Landing = ({ navigation, ...props}) => {
                 </Text>
                 <Text status="basic">On premium membership.</Text>
             </Layout>
-            <Icon name='chevron-right-outline' style={{ height: 100, width: 100 }} />
+            <Icon name='chevron-right-outline'  fill={'#56BA32'}style={{ height: 100, width: 100 }} />
         </Layout>
     )
 
@@ -82,12 +76,9 @@ const Landing = ({ navigation, ...props}) => {
     return (
         <BaseComponent>
             <Layout style={{flex:1, justifyContent:'space-between', backgroundColor:'#EAFBD6',}}>
-                {renderTitles()}
                 {renderBanner()}
                 {renderJobTypes()}
                 {rederJobCategories()}
-                {/* {renderLoginButtton()} */}
-               
 
             </Layout>
         </BaseComponent>

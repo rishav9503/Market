@@ -1,9 +1,11 @@
 import React from "react";
-import { View,  StyleSheet, Image } from "react-native";
+import { View,  StyleSheet, Image, TouchableOpacity } from "react-native";
 import { Text } from "@ui-kitten/components";
 import { shadow } from "../constants/dummydata";
-const CoinItem = ({ coin }) => (
-  <View style={styles.top}>
+import { TouchableHighlight } from "react-native-gesture-handler";
+const CoinItem = ({ coin , onTap}) => (
+  <TouchableOpacity onPress={()=> onTap()} style={styles.top}>
+    <>
     <View style={styles.coinName}>
       <Image source={{ uri: coin.image }} style={styles.image} />
       <View style={styles.containerNames}>
@@ -24,7 +26,9 @@ const CoinItem = ({ coin }) => (
         {coin.price_change_percentage_24h.toFixed(2)}%
       </Text>
     </View>
-  </View>
+    </>
+   
+  </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
